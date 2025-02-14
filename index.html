@@ -18,8 +18,8 @@
     /* Контейнер, в котором будет сердце и текст */
     .container {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 200px;
+      height: 200px;
     }
 
     /* Само сердце */
@@ -39,18 +39,18 @@
     .heart::after {
       content: "";
       position: absolute;
-      width: 110px;
-      height: 110px;
+      width: 200px;
+      height: 200px;
       background-color: red;
       border-radius: 50%;
     }
     .heart::before {
-      top: -55px;
+      top: -100px;
       left: 0;
     }
     .heart::after {
       top: 0;
-      left: 55px;
+      left: 100px;
     }
     /* Анимация биения сердца */
     @keyframes beat {
@@ -68,8 +68,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); /* Выравниваем по центру контейнера */
-      width: 150px;                     /* Ширина для переноса строк */
-      font-size: 13px;
+      width: 160px;                     /* Ширина для переноса строк */
+      font-size: 16px;
       text-align: center;
       color: white;
       line-height: 1.2;
