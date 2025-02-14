@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Сердечко</title>
+  <style>
+    /* Заполняем окно и выравниваем по центру */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fce4ec;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Контейнер, в котором будет сердце и текст */
+    .container {
+      position: relative;
+      width: 110px;
+      height: 110px;
+    }
+
+    /* Само сердце */
+    .heart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 110px;
+      height: 110px;
+      background-color: red;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite;
+      z-index: 1; /* Сердце ниже по слою */
+    }
+    /* Две полусферы для верха сердца */
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      background-color: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -55px;
+      left: 0;
+    }
+    .heart::after {
+      top: 0;
+      left: 55px;
+    }
+    /* Анимация биения сердца */
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1) rotate(-45deg);
+      }
+      50% {
+        transform: scale(1.2) rotate(-45deg);
+      }
+    }
+
+    /* Текст, который будет меняться */
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Выравниваем по центру контейнера */
+      width: 90px;                     /* Ширина для переноса строк */
+      font-size: 13px;
+      text-align: center;
+      color: white;
+      line-height: 1.2;
+      z-index: 2; /* Текст выше по слою, чем сердце */
+      pointer-events: none;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart"></div>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    // Массив с поздравительными фразами
+    const messages = [
+      "Ты красивая.",
+      "Ты умная.",
+      "Твои волосы словно водопад.",
+      "Твои глаза — как океан нежности.",
+      "Твоя улыбка озаряет день.",
+      "Твоя доброта согревает сердца.",
+      "Твоя энергия вдохновляет.",
+      "Твоя смелость восхищает.",
+      "Твой голос — музыка для души.",
+      "Ты неповторимая и удивительная."
+    ];
+
+    let index = 0;
+    const messageEl = document.getElementById("message");
+
+    function showMessage() {
+      messageEl.textContent = messages[index];
+      index = (index + 1) % messages.length;
+    }
+
+    // Показываем первое сообщение сразу
+    showMessage();
+    // Меняем сообщение каждые 2 секунды
+    setInterval(showMessage, 2000);
+  </script>
+</body>
+</html>
